@@ -1,6 +1,6 @@
 Use sportswiftdb;
 -- Shrutya Queries
-
+SELECT * FROM sportswiftdb.customer;
 -- this query finds out the details of the orders that a particular person has placed
 SELECT C.Customer_ID, C.Name, o.Delivery_date, b.Product_ID
 FROM Customer C

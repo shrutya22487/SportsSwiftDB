@@ -10,7 +10,7 @@ db = SQLAlchemy()
 user = "root"
 pin = ""
 host = "localhost"
-db_name = "books_db"
+db_name = "SportSwiftDB"
  
 # Configuring database URI
 app.config['SQLALCHEMY_DATABASE_URI'] = f"mysql+pymysql://{user}:{pin}@{host}/{db_name}"
