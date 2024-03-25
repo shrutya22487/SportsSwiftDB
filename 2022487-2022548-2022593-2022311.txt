@@ -1,0 +1,188 @@
+﻿Deadline - 4 SQL Queries
+                                        Group - 5
+Shrutya Chawla(2022487), Udbhav Singh(2022548)
+Yogesh Kumar(2022593) ,Naman Jindal(2022311)
+
+
+Relational Schema:
+
+
+Address(Address_ID, Apt_Name, Street, city, state, Country, zip)
+
+
+Phone_Number(phone_ID, num)
+
+
+Email(email_ID, em)
+
+
+Admin(Admin_ID,Name, Password)
+
+
+Supplier(Supplier_ID, Name, Address_ID, email_ID, phone_ID, password)
+
+
+Product(Product_ID, Name, Supplier_ID, Quantity, Price, Description)
+Customer(Customer_ID, Name, Address_ID, Age, phoneID, email_ID, Password, Wallet_ID)
+Wallet(Wallet_ID, Customer_ID, balance, upiID)
+Bag(Bag_ID, Product_ID)
+Delivery_Agent(Delivery_Agent_ID, Name, Address_ID, Availability, phone_ID, email_ID, Password)
+Orders(Order_ID, Customer_ID, bag_ID, Status)
+Product_Review(Product_Review_ID, Review, rating)
+Delivery_Review(DR_ID, Rating, Review)
+Cart(Customer_ID, Product_ID, Supplier_ID, quantity)
+Order_Relationship(Order_ID, Product_ID, Customer_ID, Quantity)
+Supplies(Product_ID, Supplier_ID)
+Sale_Stats(Product_ID, Supplier_ID, Selling_Date, Quantity)
+Delivered(Customer_ID, Delivery_Agent_ID, DR_ID)
+Delivers(Customer_ID, Order_ID, Delivery_Agent_ID)
+Done by Udbhav Singh 
+
+
+Queries
+1. Shrutya’s Queries:
+1. this query finds out the details of the orders that a particular person has placed
+SELECT C.Customer_ID, C.Name, o.Delivery_date, b.Product_ID
+FROM Customer C
+        JOIN orders o on C.Customer_ID = o.Customer_ID
+        JOIN bag b on b.Bag_ID = o.bag_ID
+ORDER BY Customer_ID;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+2. display the top 5 delivery agents with respect to rating
+SELECT distinct DA_avg.Name, DA_avg.average_rating
+FROM (SELECT delivery_agent.Name, avg(delivery_review.Rating) as average_rating
+     FROM delivery_agent
+              JOIN delivered ON delivery_agent.Delivery_agent_ID = delivered.Delivery_Agent_ID
+              JOIN delivery_review ON delivered.DR_ID = delivery_review.DR_ID
+     GROUP BY delivery_agent.Name) as DA_avg
+
+
+WHERE 2 >= (SELECT count(distinct d2.average_rating)
+           FROM (SELECT delivery_agent.Name, avg(delivery_review.Rating) as average_rating
+                 FROM delivery_agent
+                          JOIN delivered ON delivery_agent.Delivery_agent_ID = delivered.Delivery_Agent_ID
+                          JOIN delivery_review ON delivered.DR_ID = delivery_review.DR_ID
+                 GROUP BY delivery_agent.Name) as d2
+           WHERE DA_avg.average_rating <= d2.average_rating)
+order by DA_avg.average_rating desc;
+
+
+3. this query finds all the suppliers who do not sell any products
+SELECT supplier.Supplier_ID, supplier.Name
+from supplier
+WHERE NOT EXISTS(SELECT *
+                FROM product
+                where product.Supplier_ID = supplier.Supplier_ID);
+
+
+
+
+
+
+
+
+
+
+
+
+2. Udbhav’s Queries
+
+
+1. INSERT INTO cart VALUES (12, 5, 3,1);
+2. This query finds out the total revenue and total quantity sold per product for a supplier (sales statistics)
+SELECT Product.Name, SUM(Order_relationship.quantity) AS total_quantity_sold, SUM(Order_relationship.quantity * Product.Price) AS total_revenue
+FROM product
+INNER JOIN Order_relationship ON Product.Product_ID = Order_relationship.Product_ID
+INNER JOIN Orders ON Order_relationship.Order_ID = Orders.Order_ID
+WHERE Product.Supplier_ID  = 1
+GROUP BY Product.Name;
+
+
+3. Naman Queries
+        
+1. This query is used to search through the product catalog for the name of the product( for eg, if we search for bats, it displays all the available bats)
+Insert Into Bag Values(9,4);
+Insert Into Bag Values(9,5);
+
+
+SELECT Name
+FROM Product
+WHERE Name LIKE '%bat%'
+GROUP BY Name;
+
+
+2. Query to update the customer's address ( uses UPDATE)
+update Address
+SET Apt_name= 'Saphire gold Apartments',
+Street= 'Dalal Street',
+City='New Delhi',
+State='Delhi',
+Country='India',
+zip='110046'
+WHERE Address_ID = (SELECT Address_ID FROM customer WHERE Customer_ID = 2);
+
+
+3. Queries used while placing an order. Find out an available delivery agent
+select Delivery_agent_ID, Name
+   from Delivery_Agent
+   WHERE availability = TRUE
+   ORDER BY Delivery_agent_ID ;
+
+
+4. To Find the quantity of Different products in the Bag while ordering
+Select Product_ID,count(Product_ID)
+from Bag
+Where Bag_ID=9
+Group By Product_ID;
+4. Yogesh’s Queries
+1. This SQL query retrieves the order ID, customer name, and delivery agent name for all delivered orders by joining the Orders, Delivers, Customer, and Delivery_Agent tables based on their respective IDs.
+SELECT
+   o.Order_ID,
+   c.Name AS Customer_Name,
+   da.Name AS Delivery_Agent_Name
+FROM
+   Orders o
+INNER JOIN
+   Delivers d ON o.Order_ID = d.Order_ID
+INNER JOIN
+   Customer c ON d.Customer_ID = c.Customer_ID
+INNER JOIN
+   Delivery_Agent da ON d.Delivery_Agent_ID = da.Delivery_agent_ID
+ORDER BY Order_ID;
+
+
+2. This query deletes a product from a customer’s cart
+DELETE FROM cart WHERE Customer_ID = 4 AND Product_ID = 5 AND Supplier_ID = 8;

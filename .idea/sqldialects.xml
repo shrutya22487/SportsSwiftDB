@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="SqlDialectMappings">
+    <file url="file://$USER_HOME$/Downloads/datapop.sql" dialect="GenericSQL" />
+    <file url="file://$PROJECT_DIR$/../Senior_project/Divyajeet deadline 3/Database-Schema-&amp;-Data-Population/database-schema.sql" dialect="MySQL" />
+    <file url="file://$PROJECT_DIR$/Database_Schemes.sql" dialect="MySQL" />
+    <file url="file://$PROJECT_DIR$/datapop.sql" dialect="GenericSQL" />
+    <file url="file://$PROJECT_DIR$/queries.sql" dialect="GenericSQL" />
+  </component>
+</project>
