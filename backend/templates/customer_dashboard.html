@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customer Dashboard</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+
+<body>
+    <div class="profile">
+        <a href="{{ url_for('profile') }}">
+            <img src="{{ url_for('static', filename='images/profile_image.jpeg') }}" alt="Profile">
+            <span>Profile</span>
+        </a>
+    </div>
+</div>
+    <div class="search">
+        <form action="/search" method="post">
+            
+            <input type="text" id="search" name="search" placeholder="Search for products...">
+            <button type="submit">Search</button>
+        </form>
+       </div> 
+    <div class="container">
+        <h2>Welcome to the SportSwiftDB</h2>
+        <h3>Available Sports Equipment</h3>
+        <div class="equipment">
+            <div class="item">
+                <img src="{{ url_for('static', filename='images/product1.jpeg') }}" alt="cricket bat">
+                <p>Cricket bat</p>
+                <p>Price: ₹1500</p>
+                <form action="{{ url_for('add_to_cart') }}" method="post">
+                    <input type="hidden" name="product_id" value="1"> 
+                    <input type="hidden" name="Supplier_ID" value="1"> 
+
+                    <label for="quantity">Quantity:</label>
+                    <select name="quantity" id="quantity">
+                        {% for i in range(1, 11) %}
+                            <option value="{{ i }}">{{ i }}</option>
+                        {% endfor %}
+                    </select>
+                    <button type="submit">Add to Cart</button>
+                </form>
+                
+            </div>
+            <div class="item">
+                <img src="{{ url_for('static', filename='images/product2.jpeg') }}" alt="Shuttlecock">
+                <p>Shuttlecock</p>
+                <p>Price: ₹100</p>
+                <form action="{{ url_for('add_to_cart') }}" method="post">
+                    <input type="hidden" name="product_id" value="2">
+                    <input type="hidden" name="Supplier_ID" value="2"> 
+
+                    <label for="quantity">Quantity:</label>
+                    <select name="quantity" id="quantity">
+                        {% for i in range(1, 11) %}
+                            <option value="{{ i }}">{{ i }}</option>
+                        {% endfor %}
+                    </select>
+                    <button type="submit">Add to Cart</button>
+                </form>
+            </div>
+            <div class="item">
+                <img src="{{ url_for('static', filename='images/product3.jpeg') }}" alt=" Badminton Racquet">
+                <p> Badminton Racquet</p>
+                <p>Price: ₹450</p>
+                <form action="{{ url_for('add_to_cart') }}" method="post">
+                    <input type="hidden" name="product_id" value="3"> 
+                    <input type="hidden" name="Supplier_ID" value="3"> 
+
+                    <label for="quantity">Quantity:</label>
+                    <select name="quantity" id="quantity">
+                        {% for i in range(1, 11) %}
+                            <option value="{{ i }}">{{ i }}</option>
+                        {% endfor %}
+                    </select>
+                    <button type="submit">Add to Cart</button>
+                </form>
+            </div>
+            <div class="item">
+                <img src="{{ url_for('static', filename='images/tennis.jpg') }}" alt=" Tennis Racquet">
+                <p> tennis Racquet</p>
+                <p>Price: ₹600</p>
+                <form action="{{ url_for('add_to_cart') }}" method="post">
+                    <input type="hidden" name="product_id" value="4"> 
+                    <input type="hidden" name="Supplier_ID" value="3"> 
+
+                    <label for="quantity">Quantity:</label>
+                    <select name="quantity" id="quantity">
+                        {% for i in range(1, 11) %}
+                            <option value="{{ i }}">{{ i }}</option>
+                        {% endfor %}
+                    </select>
+                    <button type="submit">Add to Cart</button>
+                </form>
+            </div>
+            {% for product in products %}
+            <div class="item">
+                <img src="{{ url_for('static', filename='images/placeholder.png') }}" alt="placeholder image">
+                <p>{{ product[0] }}</p>
+                <p>Price: ₹{{ product[1] }}</p> 
+                <form action="{{ url_for('add_to_cart') }}" method="post">
+                    <!-- Include a hidden input field for product_id -->
+                    <input type="hidden" name="product_id" value="product[0]"> <!-- Replace "1" with dynamic value if needed -->
+                    <input type="hidden" name="Supplier_ID" value="product[2]"> 
+
+                    <label for="quantity">Quantity:</label>
+                    <select name="quantity" id="quantity">
+                        {% for i in range(1, 11) %}
+                            <option value="{{ i }}">{{ i }}</option>
+                        {% endfor %}
+                    </select>
+                    <button type="submit">Add to Cart</button>
+                </form>
+            </div>
+            {% endfor %}
+        </div>
+        <div class="checkout-button">
+            <a href="{{ url_for('checkout') }}" class="checkout-link">Go to Checkout</a>
+        </div>
+    </div>
+
+</body>
+
+</html>

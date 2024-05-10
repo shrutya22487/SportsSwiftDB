@@ -1,0 +1,256 @@
+.add-to-cart {
+    display: block;
+    width: 100%; /* Make the button full width */
+    padding: 10px;
+    background-color: #4CAF50;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 10px; /* Adjust margin-top for spacing */
+}
+
+.add-to-cart:hover {
+    background-color: #45a049;
+}
+
+.home-button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+    margin-top: 20px;
+    /* Adjust margin-top for spacing */
+    display: block;
+    width: 150px; /* Adjust width as needed */
+    margin: 20px auto; /* Center the button horizontally */
+}
+
+.home-button:hover {
+    background-color: #45a049;
+}
+
+/* Style for dropdown select */
+.item select {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-top: 5px; /* Add some margin for spacing */
+}
+
+.checkout-button .home-button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+    margin-top: 20px; /* Adjust margin-top for spacing */
+}
+
+.checkout-button .home-button:hover {
+    background-color: #45a049;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+.login-container {
+    max-width: 400px;
+    margin: 100px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+    text-align: center;
+    color: #333;
+}
+
+.input-group {
+    margin-bottom: 15px;
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: 5px;
+    color: #333;
+}
+
+.input-group input[type="text"],
+.input-group input[type="password"] {
+    width: calc(100% - 20px); /* Adjust input width to accommodate radio buttons */
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    font-size: 16px;
+    margin: 0 auto; /* Align centrally */
+    display: block; /* Ensure it takes up full width */
+}
+
+.input-group input[type="radio"] {
+    margin-right: 5px;
+}
+
+.input-group input[type="submit"] {
+    width: 100%;
+    padding: 10px;
+    background-color: #4CAF50;
+    border: none;
+    border-radius: 3px;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.input-group input[type="submit"]:hover {
+    background-color: #45a049;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+.container {
+    max-width: 800px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h2,
+h3 {
+    text-align: center;
+    color: #333;
+}
+
+.equipment {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.item {
+    width: 30%;
+    padding: 20px;
+    margin-bottom: 20px;
+    background-color: #f9f9f9;
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.item img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 5px;
+}
+
+.item p {
+    margin: 10px 0;
+    color: #555;
+}
+
+.flash-message {
+    padding: 10px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    font-weight: bold;
+    color: red;
+}
+
+/* Styling for success flash messages */
+.flash-message.success {
+    background-color: #28a745;
+    /* Green */
+    color: #fff;
+    /* White text */
+}
+
+/* Styling for error flash messages */
+.flash-message.error {
+    background-color: #dc3545;
+    /* Red */
+    color: #fff;
+    /* White text */
+}
+
+.input-group label {
+    display: inline-block;
+    width: auto;
+    margin-right: 10px;
+    /* Adjust spacing between radio button and label */
+}
+
+.input-group input[type="radio"] {
+    display: inline-block;
+    width: auto;
+    float: left;
+    /* Float the radio buttons to the left */
+    clear: none;
+    /* Clear any previous floating */
+}
+
+/* Style for the search bar container */
+.search {
+    margin: 20px auto;
+    /* Center the search bar horizontally */
+    text-align: center;
+    /* Align the content inside the search bar to the center */
+}
+
+/* Style for the search input field */
+.search input[type="text"] {
+    width: 400px;
+    /* Make the search input field wider */
+    padding: 15px;
+    /* Increase padding for better spacing */
+    border: 2px solid #ccc;
+    /* Increase border width for better visibility */
+    border-radius: 25px;
+    /* Rounder border for a more modern look */
+    font-size: 18px;
+    /* Increase font size for better readability */
+}
+
+/* Style for the search submit button */
+.search button[type="submit"] {
+    background-color: green;
+    /* Green background color */
+    color: white;
+    /* White text color */
+    padding: 15px 30px;
+    /* Increase padding inside the button */
+    border: none;
+    /* No border */
+    border-radius: 25px;
+    /* Rounder corners for the button */
+    cursor: pointer;
+    /* Cursor style on hover */
+    font-size: 18px;
+    /* Font size */
+}
+
+/* Style for the search submit button on hover */
+.search button[type="submit"]:hover {
+    background-color: darkgreen;
+    /* Dark green background color on hover */
+}

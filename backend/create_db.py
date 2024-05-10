@@ -15,7 +15,7 @@ db = pymysql.connections.Connection(
 cursor = db.cursor()
  
 # Executing SQL query
-cursor.execute("CREATE DATABASE IF NOT EXISTS SportSwiftDB")
+cursor.execute("CREATE DATABASE IF NOT EXISTS test_DB")
 cursor.execute("SHOW DATABASES")
  
 # Displaying databases

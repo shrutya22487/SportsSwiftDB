@@ -100,10 +100,14 @@ ORDER BY Order_ID;
 -- This query deletes a product from a customer’s cart
 DELETE FROM cart WHERE Customer_ID = 4 AND Product_ID = 5 AND Supplier_ID = 8;
 select * from cart;
+select * from customer natural join email;
 
+select * from product;
+SELECT * FROM cart INNER JOIN Product ON cart.Product_ID = Product.Product_ID WHERE Customer_ID  = 1;
+select * from sale_stats;
+select *
+from orders;
 
-
-
-
-
+select * from check_blocked;
+SELECT blocked FROM email JOIN sportswiftdb.customer c on email.email_ID = c.email_ID JOIN check_blocked ON c.Customer_ID =check_blocked.Customer_ID;
 

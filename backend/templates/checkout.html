@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='checkout_style.css') }}">
+</head>
+<body>
+    <h1>Checkout</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Product Name</th>
+                <th>Quantity</th>
+                <th>Price</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in cart_items %}
+            <tr>
+                <td>{{ item[5] }}</td><!--Name-->
+                <td>{{ item[3] }}</td><!--Quantity-->
+                <td>{{ item[8]*item[3] }}</td>
+                <td>
+                    <form action="{{ url_for('delete_from_cart') }}" method="post">
+                        <input type="hidden" name="product_id" value="{{ item[1] }}">
+                        <input type="hidden" name="supplier_id" value="{{ item[2] }}">
+                        <button type="submit">Delete</button>
+                    </form>                    
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <!-- Payment methods -->
+    <h2>Select Payment Method:</h2>
+    <form action="{{ url_for('pay') }}" method="post">
+        <div class="payment-methods">
+            <label for="payment1">
+                <img src="{{ url_for('static', filename='visa.png') }}" alt="Visa">
+                <input type="radio" id="payment1" name="payment_method" value="visa">
+            </label>
+            <label for="payment2">
+                <img src="{{ url_for('static', filename='mastercard.png') }}" alt="MasterCard">
+                <input type="radio" id="payment2" name="payment_method" value="mastercard">
+            </label>
+            <label for="payment3">
+                <img src="{{ url_for('static', filename='pay.png') }}" alt="PayPal">
+                <input type="radio" id="payment3" name="payment_method" value="paypal">
+            </label>
+        </div>
+        <button type="submit">Pay</button>
+    </form>
+</body>
+</html>

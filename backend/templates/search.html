@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customer Dashboard</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+
+<body>
+    <a href="/customer_dashboard" class="home-button">Home</a>
+    <div class="search">
+        <form action="/search" method="post">
+            <input type="text" id="search" name="search" placeholder="Search for products...">
+            <button type="submit">Search</button>
+        </form>
+    </div>
+    <div class="container">
+        <h2>Welcome to the SportSwiftDB</h2>
+        <h3>Available Sports Equipment</h3>
+        <div class="equipment">
+            <!-- Display products from the server -->
+            {% if products %}
+                {% for product in products %}
+                    <div class="item">
+                        <img src="{{ url_for('static', filename='images/placeholder.png') }}" alt="placeholder image">
+                        <p>{{ product[0] }}</p> 
+                        <p>Price: ₹{{ product[1] }}</p>
+                    </div>
+                {% endfor %}
+            {% else %}
+                <p>No products found.</p>
+            {% endif %}
+        </div>
+    </div>
+</body>
+
+</html>

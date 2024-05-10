@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Home Page</title>
+<style>
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Playfair Display', serif;
+    background-color: #f2f2f2;
+    color: #000;
+  }
+
+  .container {
+    position: relative;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+
+  .header {
+    padding: 40px;
+    background-color: #4CAF50;
+    color: #fff;
+    border-radius: 10px 10px 0 0;
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .header .logo {
+    max-width: 150px;
+    margin-right: auto; /* Pushes the logo to the left */
+  }
+
+  .header h1 {
+    margin: 0;
+    font-size: 36px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-align: right; /* Aligns the text to the right */
+  }
+
+  .header p.tagline {
+    margin: 10px 0 0;
+    font-size: 18px;
+    font-style: italic;
+    text-align: right; /* Aligns the text to the right */
+  }
+
+  .welcome-message {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 30px;
+    font-weight: bold;
+    color: #4CAF50;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+  }
+
+  .card-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-top: 20px;
+  }
+
+  .card {
+    width: calc(30% - 20px);
+    margin-bottom: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: transform 0.3s;
+  }
+
+  .card:hover {
+    transform: translateY(-5px);
+    background-color: #c8fdca;
+  }
+
+  .card-image {
+    width: 95%;
+    height: 300px;
+    object-fit: cover;
+    display: block;
+    margin: 10px auto auto; /* Center horizontally */
+  }
+
+
+  .card-content {
+    padding: 20px;
+  }
+
+  .card-title {
+    margin: 0;
+    font-size: 24px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .card-description {
+    margin-top: 10px;
+    font-size: 16px;
+    line-height: 1.5;
+  }
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="header">
+    <img class="logo" src="https://www.bhmpics.com/downloads/black-phoenix-logo/12.218-2183840_transparent-phoenix-clipart-phoenix-bird-black-and-white.png" alt="Phoenix Logo">
+    <div class="header-text">
+      <h1>Welcome to SportsSwiftDB</h1>
+      <p class="tagline">Your ultimate destination for bussiness Opportunity.</p>
+    </div>
+  </div>
+  <p class="welcome-message">Discover your progress</p>
+  <div class="card-container">
+    <!-- Card 1 -->
+    <div class="card">
+      <img class="card-image" src="https://cdn.pixabay.com/photo/2015/10/30/12/14/search-1013910_1280.jpg" alt="Artwork 1">
+      <div class="card-content">
+        <h2 class="card-title">Product Sale Stats</h2>
+        <p class="card-description">Here, you can see your products</p>
+      </div>
+    </div>
+    <!-- Card 2 -->
+    <div class="card">
+      <img class="card-image" src="assets/images/artwork2.jpg" alt="Artwork 2">
+      <div class="card-content">
+        <h2 class="card-title">Artwork Title</h2>
+        <p class="card-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+      </div>
+    </div>
+    <!-- Card 3 -->
+    <div class="card">
+      <img class="card-image" src="assets/images/artwork3.jpg" alt="Artwork 3">
+      <div class="card-content">
+        <h2 class="card-title">Artwork Title</h2>
+        <p class="card-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+      </div>
+    </div>
+    <!-- Card 4 -->
+    <div class="card">
+      <img class="card-image" src="assets/images/artwork4.jpg" alt="Artwork 4">
+      <div class="card-content">
+        <h2 class="card-title">Artwork Title</h2>
+        <p class="card-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

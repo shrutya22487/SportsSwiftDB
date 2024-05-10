@@ -1,0 +1,75 @@
+{% extends 'base.html' %}
+
+<title>
+    {% block title %}Cart{% endblock %}
+</title>
+
+<body>
+    {% block main %}
+        <h1 style="text-align: left;"><b>Your Cart</b></h1>
+        <hr>
+
+        {% if cart|length == 0 %}
+            <h4 style="text-align: left; font-size: 20px;">Your cart is empty.</h4>
+            <br>
+            <div>
+                <form action="/catalogue" method="GET">
+                <button type="submit" class="button" style="width: 50%;"><span>Add Items</span></button>
+            </div>
+        {% else %}
+            <h4 style="text-align: left; font-size: 15px;"> Total <b>{{ cart|length }} item(s)</b> in cart</h4>
+            <br>
+            {% for product in cart %}
+                <div class="card" style="margin-bottom: 15px;">
+                    <a class="card-link" href="/product/{{ product['productID'] }}">
+                        <img style="border-radius: 10px; margin-bottom: 12px;" align="left"
+                        src="https://media.istockphoto.com/id/1147544807/vector/thumbnail-image-vector-graphic.jpg?s=612x612&w=0&k=20&c=rnCKVbdxqkjlcs3xH87-9gocETqpspHFXu5dIGB4wuM=" width="130">
+
+                        <div style="display: flex; justify-content: space-between;">
+                            <div style="text-align: left; margin-left: 20px;">
+                                <h4 style="font-size: 25px; margin-bottom: 0px;"><b>{{ product["pname"] }}</b></h4>
+                                <p style="font-size: 14px; color: gray;"><i>By {{ product["sname"] }}</i></p>
+                                <p style="font-size: 14px; width: 70%;">{{ product["product_description"][:150] }} ...</p>
+                            </div>
+
+                            <div style="text-align: right; margin-right: 5px;">
+                                <p style="font-size: 16px; margin-bottom: 0px;"><b>Quantity: </b>{{ product["quantity"] }}</p>
+                                <p style="font-size: 16px;"><b>Total:</b> $ {{ product["total"] }}</p>
+
+                                <div style="display: flex; align-items: flex-end; margin-top: 40px;">
+                                    <form action="/account/cart" method="POST">
+                                        <input type="hidden" name="pid" value="{{ product['productID'] }}">
+                                        <input type="hidden" name="action" value="remove">
+                                        <button type="submit" class="btn btn-danger">Remove Item</button>
+                                    </form>
+                                    <form action="/product/{{ product['productID'] }}" method="GET" style="margin-left: 10px;">
+                                        <input type="hidden" name="edit" value="true">
+                                        <input type="hidden" name="qty" value="{{ product['quantity'] }}">
+                                        <button type="submit" class="btn btn-primary">Edit Quantity</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            {% endfor %}
+
+            <br>
+            <h3 style="text-align: right; margin-right: 20px;"><b>Total: $ {{ total }}</b></h3>
+            <br>
+
+            <div style="display: inline-flex; width: 100%;">
+                <form action="/account/cart" method="POST" style="width: 50%; margin-right: 20px; margin-left: 20px;">
+                    <input type="hidden" name="action" value="clear">
+                    <button type="submit" class="btn btn-danger" style="height: 125%; width: 100%; font-size: 21px;"><b>Clear Cart</b></button>
+                </form>
+
+                <form action="/account/cart" method="POST" style="width: 50%; margin-right: 20px; margin-left: 20px;">
+                    <input type="hidden" name="action" value="checkout">
+                    <button type="submit" class="btn btn-success" style="height: 125%; width: 100%; font-size: 21px;"><b>Proceed to Checkout</b></button>
+                </form>
+            </div>
+
+        {% endif %}
+    {% endblock %}
+</body>

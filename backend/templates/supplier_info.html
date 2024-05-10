@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Supplier Dashboard</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            color: #4CAF50;
+            text-align: center;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        th {
+            background-color: #4CAF50;
+            color: white;
+        }
+        tr:hover {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Supplier Dashboard</h1>
+        <table>
+            <tr>
+                <th>Supplier ID</th>
+                <th>Product Name</th>
+                <th>Quantity Sold</th>
+                <th>Action</th>
+            </tr>
+            {% for row in data %}
+            <form action="/update_product_name" method="post">
+                <input type="hidden" name="supplier_id" value="{{ row.Supplier_ID }}">
+                <input type="text" name="new_name" value="{{ row.Product_Name }}">
+                <input type="submit" value="Update">
+            </form>
+            {% endfor %}
+        </table>
+          
+    </div>
+</body>
+</html>
